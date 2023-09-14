@@ -7,27 +7,31 @@ interface IInputProps {
   label: string,
   type: string,
   placeholder: string,
+  value?: string,
+  onChange?: any
 }
 
-export function Input({ label, type, placeholder }: IInputProps) {
+export function Input({ label, type, placeholder, onChange, value }: IInputProps) {
 
-  const [isShowPassword, setIsShowPassword] = useState<boolean>(true)
+  const [isShowPassword, setIsShowPassword] = useState<boolean>( type==='password' ? true : false )
 
   return (
     <InputContainer>
       <section>
-        <label /* for="email" */>{label}</label>
-        {type === 'password' && (
-          <a href="#"> Esqueceu a senha? </a>
-        )}
+        <label>{ label }</label>
+        { type === 'password' && ( <a href="#"> Esqueceu a senha? </a> ) }
       </section>
+      
       <input
+        required
         id={type}
         type={isShowPassword ? "password" : "text"}
         name={type}
-        required
         placeholder={placeholder}
+        onChange={onChange}
+        value={value}
       />
+
       {type === 'password' && (
         isShowPassword === true
           ?
