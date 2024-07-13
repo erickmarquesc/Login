@@ -18,6 +18,7 @@ export default function Home() {
             </button>
           </div>
         </section>
+        <p className="text-xs font-light text-white mt-4">Insira sua chave de segurança para acessar a plataforma.</p>
       </div>
     </main>
   );
